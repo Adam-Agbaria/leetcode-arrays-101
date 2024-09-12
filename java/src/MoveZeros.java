@@ -1,13 +1,14 @@
 public class MoveZeros {
     public void moveZeroes(int[] array) {
-        int j = 0;
-        for (int i = 0 ; i < array.length ; i++) {
-            if (array[i] != 0) {
-                array[j++] = array[i];
-            }
-        }
-        while (j < array.length) {
-            array[j++] = 0;
+        //This Solution Solves it in O(n)
+        int temp  = 0;
+        for(int i = 0, j = 0; i < arr.length; i++){
+            if(arr[i] != 0){
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                j++;
+            }     
         }
     }
 }
