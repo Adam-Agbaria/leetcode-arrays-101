@@ -2,24 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindAllNumbersDisappearedInAnArray {
+    //The Previous solution doesn't work, Here is a new proposed solution
     public List<Integer> findDisappearedNumbers(int[] array) {
-        for (int element : array) {
-            if (element != 0) {
-                markUsed(array, element - 1);
-            }
-        }
         List<Integer> result = new ArrayList<>();
-        for (int index = 0 ; index < array.length ; index++) {
-            if (array[index] != 0)
-                result.add(index + 1);
+        int[] marked = new int[array.length + 1];
+        for(int i = 0; i < array.length; i++){
+            marked[array[i]] += 1;
         }
-        return result;
-    }
+        for(int i = 1; i < array.length; i++){
+            if(marked[i] ==  0)
+                result.add(i);
+        }
 
-    private void markUsed(int[] array, int index) {
-        if (array[index] == 0) return;
-        int value = array[index];
-        array[index] = 0;
-        markUsed(array, value - 1);
+        return result;
     }
 }
